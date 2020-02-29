@@ -10,7 +10,7 @@ fun processSokobanMove(squareArray: Array<String>, move: String): Array<String> 
         }
     }
     when (move) {
-        "L" -> move(nestedArray, -1, 0 )
+        "L" -> move(nestedArray, -1, 0)
         "R" -> move(nestedArray, 1, 0)
         "D" -> move(nestedArray, 0, 1)
         "U" -> move(nestedArray, 0, -1)
@@ -22,35 +22,44 @@ fun processSokobanMove(squareArray: Array<String>, move: String): Array<String> 
 }
 
 fun move(nestedArray: Array<CharArray>, x: Int, y: Int): Array<CharArray> {
-    for (i in 0..nestedArray.lastIndex) {
+    outerloop@ for (i in 0..nestedArray.lastIndex) {
         loop@ for (j in nestedArray[0].indices) {
             if (nestedArray[i][j].toUpperCase() == 'P') {
                 when (nestedArray[i + y][j + x]) {
-                    '#' -> break@loop
+                    '#' -> {if (x>0) break@loop
+                        if (y>0) break@outerloop}
                     ' ' -> {
+                        println("here" + (i + y).toString() + " " + (j + x))
                         nestedArray[i + y][j + x] = 'p'
                         nestedArray[i][j] = ' '
-                        break@loop
+                        if (x>0) break@loop
+                        if (y>0) break@outerloop
                     }
                     '*' -> {
                         nestedArray[i + y][j + x] = 'P'
                         nestedArray[i][j] = ' '
-                        break@loop
+                        if (x>0) break@loop
+                        if (y>0) break@outerloop
                     }
                     'b' -> {
                         when (nestedArray[i + y * 2][j + x * 2]) {
-                            '#', 'b' -> break@loop
+                            '#', 'b' -> {
+                                if (x>0) break@loop
+                                if (y>0) break@outerloop
+                            }
                             ' ' -> {
                                 nestedArray[i + y * 2][j + x * 2] = 'b'
                                 nestedArray[i + y][j + x] = 'p'
                                 nestedArray[i][j] = ' '
-                                break@loop
+                                if (x>0) break@loop
+                                if (y>0) break@outerloop
                             }
                             '*' -> {
                                 nestedArray[i + y * 2][j + x * 2] = 'B'
                                 nestedArray[i + y][j + x] = 'p'
                                 nestedArray[i][j] = ' '
-                                break@loop
+                                if (x>0) break@loop
+                                if (y>0) break@outerloop
                             }
                         }
                     }

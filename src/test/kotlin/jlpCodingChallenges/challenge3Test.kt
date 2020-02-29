@@ -355,7 +355,7 @@ internal class SokobanMoveTest2 {
     }
 
     @Test
-    fun `should return changed array when move is left and left char is space `() {
+    fun `should return changed array when move is down and down char is space `() {
         val result = processSokobanMove(
             arrayOf(
                 "#############",
@@ -363,13 +363,13 @@ internal class SokobanMoveTest2 {
                 "#     b  b  #",
                 "# *         #",
                 "#############"
-            ), "L"
+            ), "D"
         )
         assertThat(result).isEqualTo(
             arrayOf(
                 "#############",
-                "#p        * #",
-                "#     b  b  #",
+                "#         * #",
+                "# p   b  b  #",
                 "# *         #",
                 "#############"
             )
@@ -377,21 +377,21 @@ internal class SokobanMoveTest2 {
     }
 
     @Test
-    fun `should return changed array with P when move is left and left char is * `() {
+    fun `should return changed array with P when move is down and down char is * `() {
         val result = processSokobanMove(
             arrayOf(
                 "#############",
-                "#*p         #",
-                "#     b  b  #",
+                "# p         #",
+                "# *   b  b  #",
                 "# *         #",
                 "#############"
-            ), "L"
+            ), "D"
         )
         assertThat(result).isEqualTo(
             arrayOf(
                 "#############",
-                "#P          #",
-                "#     b  b  #",
+                "#           #",
+                "# P   b  b  #",
                 "# *         #",
                 "#############"
             )
@@ -399,238 +399,87 @@ internal class SokobanMoveTest2 {
     }
 
     @Test
-    fun `should return changed array with b moved when move is left and left char is b `() {
+    fun `should return changed array with b moved when move is down and down char is b `() {
         val result = processSokobanMove(
             arrayOf(
                 "#############",
-                "#*          #",
-                "#     bp b  #",
+                "#*     p    #",
+                "#      b b  #",
                 "# *         #",
                 "#############"
-            ), "L"
+            ), "D"
         )
         assertThat(result).isEqualTo(
             arrayOf(
                 "#############",
                 "#*          #",
-                "#    bp  b  #",
-                "# *         #",
+                "#      p b  #",
+                "# *    b    #",
                 "#############"
             )
         )
     }
     @Test
-    fun `should return unchanged array with b moved when move is left and left char is b against a wall `() {
+    fun `should return unchanged array with b moved when move is down and down char is b against a wall `() {
         val result = processSokobanMove(
             arrayOf(
                 "#############",
                 "#*          #",
-                "#bp      b  #",
-                "# *         #",
+                "#b       p  #",
+                "# *      b  #",
                 "#############"
-            ), "L"
+            ), "D"
         )
         assertThat(result).isEqualTo(
             arrayOf(
                 "#############",
                 "#*          #",
-                "#bp      b  #",
-                "# *         #",
+                "#b       p  #",
+                "# *      b  #",
                 "#############"
             )
         )
     }
     @Test
-    fun `should return unchanged array with b moved when move is left and left char is b against a box `() {
+    fun `should return unchanged array with b moved when move is down and down char is b against a box `() {
         val result = processSokobanMove(
             arrayOf(
                 "#############",
-                "#*          #",
-                "#bbp     b  #",
-                "# *         #",
+                "#*       p  #",
+                "#        b  #",
+                "# *      b  #",
                 "#############"
-            ), "L"
+            ), "D"
         )
         assertThat(result).isEqualTo(
             arrayOf(
                 "#############",
-                "#*          #",
-                "#bbp     b  #",
-                "# *         #",
+                "#*       p  #",
+                "#        b  #",
+                "# *      b  #",
                 "#############"
             )
         )
     }
     @Test
-    fun `should return changed array with b moved when move is left and left char is b against a * `() {
+    fun `should return changed array with b moved when move is down and down char is b against a * `() {
         val result = processSokobanMove(
             arrayOf(
                 "#############",
-                "#*          #",
-                "#*bp     b  #",
-                "# *         #",
+                "#*       p  #",
+                "#        b  #",
+                "# *      *  #",
                 "#############"
-            ), "L"
+            ), "D"
         )
         assertThat(result).isEqualTo(
             arrayOf(
                 "#############",
                 "#*          #",
-                "#Bp      b  #",
-                "# *         #",
+                "#        p  #",
+                "# *      B  #",
                 "#############"
             )
         )
     }
-    @Test
-    fun `should return unchanged array when move is right and right char is # `() {
-        val result = processSokobanMove(
-            arrayOf(
-                "#############",
-                "#         *p#",
-                "#     b  b  #",
-                "# *         #",
-                "#############"
-            ), "R"
-        )
-        assertThat(result).isEqualTo(
-            arrayOf(
-                "#############",
-                "#         *p#",
-                "#     b  b  #",
-                "# *         #",
-                "#############"
-            )
-        )
-    }
-
-    @Test
-    fun `should return changed array when move is right and right char is space `() {
-        val result = processSokobanMove(
-            arrayOf(
-                "#############",
-                "# p       * #",
-                "#     b  b  #",
-                "# *         #",
-                "#############"
-            ), "R"
-        )
-        assertThat(result).isEqualTo(
-            arrayOf(
-                "#############",
-                "#  p      * #",
-                "#     b  b  #",
-                "# *         #",
-                "#############"
-            )
-        )
-    }
-
-    @Test
-    fun `should return changed array with P when move is right and right char is * `() {
-        val result = processSokobanMove(
-            arrayOf(
-                "#############",
-                "# p*        #",
-                "#     b  b  #",
-                "# *         #",
-                "#############"
-            ), "R"
-        )
-        assertThat(result).isEqualTo(
-            arrayOf(
-                "#############",
-                "#  P        #",
-                "#     b  b  #",
-                "# *         #",
-                "#############"
-            )
-        )
-    }
-
-    @Test
-    fun `should return changed array with b moved when move is right and right char is b `() {
-        val result = processSokobanMove(
-            arrayOf(
-                "#############",
-                "#*          #",
-                "#     pb b  #",
-                "# *         #",
-                "#############"
-            ), "R"
-        )
-        assertThat(result).isEqualTo(
-            arrayOf(
-                "#############",
-                "#*          #",
-                "#      pbb  #",
-                "# *         #",
-                "#############"
-            )
-        )
-    }
-    @Test
-    fun `should return unchanged array with b moved when move is right and right char is b against a wall `() {
-        val result = processSokobanMove(
-            arrayOf(
-                "#############",
-                "#*          #",
-                "#        bpb#",
-                "# *         #",
-                "#############"
-            ), "R"
-        )
-        assertThat(result).isEqualTo(
-            arrayOf(
-                "#############",
-                "#*          #",
-                "#        bpb#",
-                "# *         #",
-                "#############"
-            )
-        )
-    }
-    @Test
-    fun `should return unchanged array with b moved when move is right and right char is b against a box `() {
-        val result = processSokobanMove(
-            arrayOf(
-                "#############",
-                "#*          #",
-                "#   b    pbb#",
-                "# *         #",
-                "#############"
-            ), "R"
-        )
-        assertThat(result).isEqualTo(
-            arrayOf(
-                "#############",
-                "#*          #",
-                "#   b    pbb#",
-                "# *         #",
-                "#############"
-            )
-        )
-    }
-    @Test
-    fun `should return changed array with b moved when move is right and right char is b against a * `() {
-        val result = processSokobanMove(
-            arrayOf(
-                "#############",
-                "#*          #",
-                "# pb*    b  #",
-                "# *         #",
-                "#############"
-            ), "R"
-        )
-        assertThat(result).isEqualTo(
-            arrayOf(
-                "#############",
-                "#*          #",
-                "#  pB    b  #",
-                "# *         #",
-                "#############"
-            )
-        )
-    }
-
 }
