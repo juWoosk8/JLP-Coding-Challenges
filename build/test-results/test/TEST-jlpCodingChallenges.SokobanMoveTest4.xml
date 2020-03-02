@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="jlpCodingChallenges.SokobanMoveTest4" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-03-02T09:21:10" hostname="VI-LLLR0AJGUC" time="0.166">
+  <properties/>
+  <testcase name="should return changed array when move is up and up char is B next to a space()" classname="jlpCodingChallenges.SokobanMoveTest4" time="0.166"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

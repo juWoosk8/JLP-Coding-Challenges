@@ -31,7 +31,7 @@ fun move(nestedArray: Array<CharArray>, x: Int, y: Int): Array<CharArray> {
                     ' ' -> {
                         println("here" + (i + y).toString() + " " + (j + x))
                         nestedArray[i + y][j + x] = 'p'
-                        nestedArray[i][j] = ' '
+                        if (nestedArray[i][j] == 'P'){ nestedArray[i][j] = '*' } else {nestedArray[i][j] = ' '}
                         if (x>0) break@loop
                         if (y>0) break@outerloop
                     }
@@ -41,7 +41,7 @@ fun move(nestedArray: Array<CharArray>, x: Int, y: Int): Array<CharArray> {
                         if (x>0) break@loop
                         if (y>0) break@outerloop
                     }
-                    'b' -> {
+                    'b', 'B' -> {
                         when (nestedArray[i + y * 2][j + x * 2]) {
                             '#', 'b' -> {
                                 if (x>0) break@loop
@@ -49,7 +49,7 @@ fun move(nestedArray: Array<CharArray>, x: Int, y: Int): Array<CharArray> {
                             }
                             ' ' -> {
                                 nestedArray[i + y * 2][j + x * 2] = 'b'
-                                nestedArray[i + y][j + x] = 'p'
+                                if ( (nestedArray[i + y][j + x])  == 'b') {nestedArray[i + y][j + x] = 'p'} else {nestedArray[i + y][j + x] = 'P'}
                                 nestedArray[i][j] = ' '
                                 if (x>0) break@loop
                                 if (y>0) break@outerloop
