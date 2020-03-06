@@ -5,7 +5,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 
-internal class describeLaptopTest {
+internal class DescribeLaptopTest {
     val processorUpgrade = Upgrade("Processer", "super fast", 10.00)
     val memoryUpgrade = Upgrade("Memory", "16GB", 49.99)
     val hardDriveUpgrade = Upgrade("Hard drive", "4TB", 8.00)

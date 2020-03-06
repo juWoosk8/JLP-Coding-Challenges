@@ -21,7 +21,7 @@ class LaptopUpgrade(val delegate: LaptopProducer, upgrades: List<Upgrade>) : Lap
         val df = DecimalFormat("#.00")
         var description = delegate.description()
         for (upgrade in upgrades) {
-            delegate.price = delegate.price + upgrade.upgradePrice
+            delegate.price += upgrade.upgradePrice
             description = "$description + ${upgrade.upgradeName} ${upgrade.upgradeDescr} £${df.format(upgrade.upgradePrice)}"
         }
         return description
