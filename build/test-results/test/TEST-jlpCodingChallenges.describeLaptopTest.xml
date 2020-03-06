@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="jlpCodingChallenges.describeLaptopTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-03-06T16:44:41" hostname="VI-LLLR0AJGUC" time="0.172">
+  <properties/>
+  <testcase name="Dell costs 49999 + Memory 16GB 4999 + Case Shiny 300()" classname="jlpCodingChallenges.describeLaptopTest" time="0.166"/>
+  <testcase name="Dell costs 49999 + Memory 16GB 4999()" classname="jlpCodingChallenges.describeLaptopTest" time="0.001"/>
+  <testcase name="should return Dell costs 49999()" classname="jlpCodingChallenges.describeLaptopTest" time="0.001"/>
+  <testcase name="Dell with all the bells and whistles()" classname="jlpCodingChallenges.describeLaptopTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
